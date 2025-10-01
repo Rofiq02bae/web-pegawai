@@ -4,6 +4,8 @@ namespace App\Filament\Resources\Loans\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
 
 class LoanForm
@@ -12,18 +14,23 @@ class LoanForm
     {
         return $schema
             ->components([
-                TextInput::make('asset_id')
+                Select::make('asset_id')
                     ->relationship('asset', 'nama')
                     ->required(),
-                TextInput::make('user_id')
+                Select::make('user_id')
                     ->relationship('user', 'name')
                     ->required(),
                 DatePicker::make('tanggal_pinjam')
                     ->required(),
                 DatePicker::make('tanggal_kembali'),
-                TextInput::make('status')
+                Select::make('status')
                     ->required()
-                    ->default('pending'),
+                    ->default('pending')
+                    ->options([
+                        'pending' => 'Pending',
+                        'approved' => 'Approved',
+                        'rejected' => 'Rejected',
+                    ]),
             ]);
     }
 }

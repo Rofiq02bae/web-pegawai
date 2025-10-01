@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained()->onDelete('cascade');
-            $table->enum('jenis',['dinas','dinas_luar','cuti','diklat','tugas_belajar','lainnya']);
+            $table->enum('jenis',['dinas','dinas_luar','cuti','diklat','lainnya']);
             $table->date('tanggal_awal');
             $table->date('tanggal_akhir')->nullable();
             $table->string('nomor_surat')->nullable();

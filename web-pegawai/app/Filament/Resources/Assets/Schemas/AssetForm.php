@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Assets\Schemas;
 
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
 
 class AssetForm
@@ -17,10 +18,12 @@ class AssetForm
                     ->required(),
                 TextInput::make('kategori'),
                 TextInput::make('kondisi'),
-                TextInput::make('status')
-                    ->optional()
-                    ->enum(['tersedia','dipinjam'])
-                    ->default('tersedia'),
+                Select::make('status')
+                    ->default('tersedia')
+                    ->options([
+                        'tersedia' => 'Tersedia',
+                        'dipinjam' => 'Dipinjam',
+                    ])
             ]);
     }
 }

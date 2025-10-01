@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('kode')->unique();
             $table->string('kategori')->nullable(); // kendaraan, barang, ruangan
-            $table->string('kondisi')->nullable();  // baik, rusak
+            $table->enum('kondisi',['baik','rusak'])->default('baik');
             $table->enum('status',['tersedia','dipinjam'])->default('tersedia');
             $table->timestamps();
         });
