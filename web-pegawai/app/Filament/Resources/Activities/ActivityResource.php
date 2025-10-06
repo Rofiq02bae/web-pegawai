@@ -20,6 +20,26 @@ class ActivityResource extends Resource
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-clipboard-document-list';
     protected static string | UnitEnum | null $navigationGroup = 'Manajemen Aktivitas';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('view activities');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create activities');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()->can('edit activities');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->can('delete activities');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ActivityForm::configure($schema);

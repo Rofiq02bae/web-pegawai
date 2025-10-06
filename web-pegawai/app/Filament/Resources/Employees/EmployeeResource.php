@@ -20,6 +20,26 @@ class EmployeeResource extends Resource
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-users';
     protected static string | UnitEnum | null $navigationGroup = 'Manajemen Pegawai';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('view employees');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create employees');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()->can('edit employees');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->can('delete employees');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return EmployeeForm::configure($schema);
