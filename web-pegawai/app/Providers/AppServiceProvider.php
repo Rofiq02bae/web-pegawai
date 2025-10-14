@@ -27,15 +27,15 @@ class AppServiceProvider extends ServiceProvider
             $user = $event->user;
             
             if ($user->hasRole('admin')) {
-                session(['intended_redirect' => route('filament.admin.pages.dashboard')]);
+                session(['intended_redirect' => route('filament.admin.pages.dashboard-atasan')]);
             } elseif ($user->hasRole('operator')) {
                 session(['intended_redirect' => route('filament.admin.resources.activities.index')]);
             } elseif ($user->hasRole('atasan')) {
-                session(['intended_redirect' => route('filament.admin.resources.activities.index')]);
+                session(['intended_redirect' => route('filament.admin.pages.dashboard-atasan')]);
             } elseif ($user->hasRole('pegawai')) {
                 session(['intended_redirect' => route('filament.admin.pages.employee-submission')]);
             } else {
-                session(['intended_redirect' => '/dashboard']);
+                session(['intended_redirect' => route('filament.admin.pages.dashboard-atasan')]);
             }
         });
     }
