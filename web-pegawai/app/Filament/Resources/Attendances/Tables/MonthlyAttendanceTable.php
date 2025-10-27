@@ -26,25 +26,49 @@ class MonthlyAttendanceTable
         
         // Build columns array
         $columns = [
-            // Fixed columns
+            // Fixed columns - Sticky
             TextColumn::make('row_number')
                 ->label('No')
                 ->rowIndex()
-                ->alignCenter(),
+                ->alignCenter()
+                ->toggleable(false)
+                ->extraHeaderAttributes([
+                    'class' => 'sticky left-0 z-10 bg-white',
+                    'style' => 'min-width: 50px;'
+                ])
+                ->extraAttributes([
+                    'class' => 'sticky left-0 z-10 bg-white',
+                ]),
                 
             TextColumn::make('nip')
                 ->label('NIP')
                 ->searchable()
                 ->sortable()
+                ->toggleable(false)
                 ->weight('semibold')
-                ->copyable(),
+                ->copyable()
+                ->extraHeaderAttributes([
+                    'class' => 'sticky left-[50px] z-10 bg-white',
+                    'style' => 'min-width: 120px;'
+                ])
+                ->extraAttributes([
+                    'class' => 'sticky left-[50px] z-10 bg-white',
+                ]),
                 
             TextColumn::make('name')
                 ->label('Nama')
                 ->searchable()
                 ->sortable()
+                ->toggleable(false)
                 ->weight('semibold')
-                ->wrap(),
+                ->wrap()
+                ->extraHeaderAttributes([
+                    'class' => 'sticky left-[170px] z-10 bg-white',
+                    'style' => 'min-width: 200px;'
+                ])
+                ->extraAttributes([
+                    'class' => 'sticky left-[170px] z-10 bg-white',
+                ]),
         ];
 
         // Add dynamic date columns

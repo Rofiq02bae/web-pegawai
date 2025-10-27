@@ -24,9 +24,11 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
             ->id('admin')
             ->path('admin')
+            ->brandName('Web Pegawai')
+            ->brandLogo(asset('images/logos.png'))
+            ->brandLogoHeight('3rem')
             ->login()
             ->colors([
                 'primary' => Color::Blue,
@@ -57,6 +59,7 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 'Manajemen Fitur',
                 'System',
-            ]);
+            ])
+            ->viteTheme('resources/css/filament/admin/theme.css');
     }
 }

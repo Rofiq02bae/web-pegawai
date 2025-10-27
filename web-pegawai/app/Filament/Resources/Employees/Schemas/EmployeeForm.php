@@ -4,8 +4,8 @@ namespace App\Filament\Resources\Employees\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Filament\Forms\Components\Section;
 
 class EmployeeForm
 {
