@@ -1,19 +1,27 @@
 /* Sticky columns for attendance tables */
-.fi-ta-table {
+.fi-ta-table,
+.fi-ta-content {
     overflow-x: auto !important;
     position: relative !important;
 }
 
-.fi-ta-table table {
+.fi-ta-table table,
+.fi-ta-content table {
     border-collapse: separate !important;
     border-spacing: 0 !important;
     position: relative !important;
 }
 
-/* Sticky columns styling - Force sticky position */
-.sticky,
-th.sticky,
-td.sticky {
+/* Sticky columns styling - Force sticky position with highest specificity */
+.fi-ta-table .sticky,
+.fi-ta-table th.sticky,
+.fi-ta-table td.sticky,
+.fi-ta-content .sticky,
+.fi-ta-content th.sticky,
+.fi-ta-content td.sticky,
+table .sticky,
+table th.sticky,
+table td.sticky {
     position: sticky !important;
     background-color: white !important;
     box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1) !important;
@@ -21,20 +29,44 @@ td.sticky {
 }
 
 /* Header sticky should be on top */
-th.sticky {
+.fi-ta-table th.sticky,
+.fi-ta-content th.sticky,
+table th.sticky {
     z-index: 20 !important;
+    background-color: white !important;
+}
+
+/* Body sticky cells */
+.fi-ta-table tbody td.sticky,
+.fi-ta-content tbody td.sticky,
+table tbody td.sticky {
+    position: sticky !important;
+    z-index: 10 !important;
+    background-color: white !important;
 }
 
 /* Specific sticky positions */
-.left-0 {
+.fi-ta-table .left-0,
+.fi-ta-content .left-0,
+table .left-0,
+th.left-0,
+td.left-0 {
     left: 0 !important;
 }
 
-.left-\[50px\] {
+.fi-ta-table .left-\[50px\],
+.fi-ta-content .left-\[50px\],
+table .left-\[50px\],
+th.left-\[50px\],
+td.left-\[50px\] {
     left: 50px !important;
 }
 
-.left-\[170px\] {
+.fi-ta-table .left-\[170px\],
+.fi-ta-content .left-\[170px\],
+table .left-\[170px\],
+th.left-\[170px\],
+td.left-\[170px\] {
     left: 170px !important;
 }
 

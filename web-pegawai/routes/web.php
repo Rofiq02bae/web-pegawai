@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Document;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\AttendanceReportController;
 
 Route::get('/documents/download/{document}', function (Document $document) {
     // Check if file exists
@@ -19,3 +20,11 @@ Route::get('/documents/download/{document}', function (Document $document) {
     
     return Storage::download($document->path, $document->filename);
 })->name('documents.download');
+
+// Attendance Report Routes
+Route::get('/attendance/report', [AttendanceReportController::class, 'monthlyReport'])
+    ->name('attendance.report');
+Route::get('/attendance/print', [AttendanceReportController::class, 'print'])
+    ->name('attendance.print');
+Route::get('/attendance/export-excel', [AttendanceReportController::class, 'exportExcel'])
+    ->name('attendance.export-excel');

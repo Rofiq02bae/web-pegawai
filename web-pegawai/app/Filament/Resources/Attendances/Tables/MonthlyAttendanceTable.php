@@ -34,10 +34,11 @@ class MonthlyAttendanceTable
                 ->toggleable(false)
                 ->extraHeaderAttributes([
                     'class' => 'sticky left-0 z-10 bg-white',
-                    'style' => 'min-width: 50px;'
+                    'style' => 'min-width: 50px; position: sticky !important; left: 0 !important; z-index: 20 !important; background-color: white !important;'
                 ])
                 ->extraAttributes([
                     'class' => 'sticky left-0 z-10 bg-white',
+                    'style' => 'position: sticky !important; left: 0 !important; z-index: 10 !important; background-color: white !important;'
                 ]),
                 
             TextColumn::make('nip')
@@ -49,10 +50,11 @@ class MonthlyAttendanceTable
                 ->copyable()
                 ->extraHeaderAttributes([
                     'class' => 'sticky left-[50px] z-10 bg-white',
-                    'style' => 'min-width: 120px;'
+                    'style' => 'min-width: 120px; position: sticky !important; left: 50px !important; z-index: 20 !important; background-color: white !important;'
                 ])
                 ->extraAttributes([
                     'class' => 'sticky left-[50px] z-10 bg-white',
+                    'style' => 'position: sticky !important; left: 50px !important; z-index: 10 !important; background-color: white !important;'
                 ]),
                 
             TextColumn::make('name')
@@ -64,10 +66,11 @@ class MonthlyAttendanceTable
                 ->wrap()
                 ->extraHeaderAttributes([
                     'class' => 'sticky left-[170px] z-10 bg-white',
-                    'style' => 'min-width: 200px;'
+                    'style' => 'min-width: 200px; position: sticky !important; left: 170px !important; z-index: 20 !important; background-color: white !important; border-right: 2px solid #e5e7eb !important;'
                 ])
                 ->extraAttributes([
                     'class' => 'sticky left-[170px] z-10 bg-white',
+                    'style' => 'position: sticky !important; left: 170px !important; z-index: 10 !important; background-color: white !important; border-right: 2px solid #e5e7eb !important;'
                 ]),
         ];
 

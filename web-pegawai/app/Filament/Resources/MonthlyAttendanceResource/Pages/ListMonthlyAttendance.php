@@ -7,6 +7,7 @@ use App\Filament\Resources\Attendances\Tables\MonthlyAttendanceTable;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Actions;
 use Filament\Tables\Table;
+use Filament\Notifications\Notification;
 use Carbon\Carbon;
 
 class ListMonthlyAttendance extends ListRecords
@@ -37,29 +38,47 @@ class ListMonthlyAttendance extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('view_report')
+                ->label('Lihat Laporan Web')
+                ->icon('heroicon-o-document-text')
+                ->color('info')
+                ->url(function () {
+                    $month = request('tableFilters.month.value', now()->month);
+                    $year = request('tableFilters.year.value', now()->year);
+                    return route('attendance.report', ['year' => $year, 'month' => $month]);
+                })
+                ->openUrlInNewTab(),
+            
             Actions\Action::make('export')
-                ->label('Export Excel')
+                ->label('Export CSV')
                 ->icon('heroicon-o-arrow-down-tray')
                 ->color('success')
-                ->action(function () {
-                    // TODO: Implement Excel export
-                    $this->notify('info', 'Fitur export akan segera tersedia');
-                }),
+                ->url(function () {
+                    $month = request('tableFilters.month.value', now()->month);
+                    $year = request('tableFilters.year.value', now()->year);
+                    return route('attendance.export-excel', ['year' => $year, 'month' => $month]);
+                })
+                ->openUrlInNewTab(),
                 
             Actions\Action::make('print')
                 ->label('Print')
                 ->icon('heroicon-o-printer')
                 ->color('gray')
-                ->action(function () {
-                    // TODO: Implement print view
-                    $this->notify('info', 'Fitur print akan segera tersedia');
-                }),
+                ->url(function () {
+                    $month = request('tableFilters.month.value', now()->month);
+                    $year = request('tableFilters.year.value', now()->year);
+                    return route('attendance.print', ['year' => $year, 'month' => $month]);
+                })
+                ->openUrlInNewTab(),
                 
             Actions\Action::make('refresh')
                 ->label('Refresh')
                 ->icon('heroicon-o-arrow-path')
                 ->action(function () {
-                    $this->redirect(request()->fullUrl());
+                    Notification::make()
+                        ->title('Data berhasil direfresh')
+                        ->success()
+                        ->send();
                 }),
         ];
     }
